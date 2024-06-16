@@ -17,22 +17,14 @@ export default function Home() {
     <div className="flex flex-col w-6/12 mx-auto">
       <Button
         children="User App"
-        className="bg-gray-800 w-fit text-white p-2 rounded-lg m-4 hover:bg-gray-600"
+        onClick={() => {
+          alert("Hi from User App");
+        }}
       />
       <div>hi there {balance}</div>
       <div className="flex">
-        <button
-          className="bg-gray-800 w-fit text-white p-2 rounded-lg m-4 hover:bg-gray-600"
-          onClick={handleIncrement}
-        >
-          Increment
-        </button>
-        <button
-          className="bg-gray-800 w-fit text-white p-2 rounded-lg m-4 hover:bg-gray-600"
-          onClick={handleDecrement}
-        >
-          Decrement
-        </button>
+        <Button onClick={handleIncrement} children="Increment" />
+        <Button onClick={handleDecrement} children="Decrement" />
       </div>
     </div>
   );
