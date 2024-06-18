@@ -10,7 +10,7 @@ export const authOptions = {
         phone: {
           label: "Phone number",
           type: "text",
-          placeholder: "1231231231",
+          placeholder: "+91 XXXXXXXXXX",
           required: true,
         },
         password: { label: "Password", type: "password", required: true },
