@@ -18,14 +18,19 @@ app.post("/webhook", async (req, res) => {
   };
   try {
     await db.$transaction([
-      db.balance.updateMany({
+      db.balance.upsert({
         where: {
           userId: Number(paymentInformation.userId),
         },
-        data: {
+        update: {
           amount: {
             increment: Number(paymentInformation.amount),
           },
+        },
+        create: {
+          userId: Number(paymentInformation.userId),
+          amount: Number(paymentInformation.amount),
+          locked: 0,
         },
       }),
       db.onRampTransaction.updateMany({
@@ -38,12 +43,12 @@ app.post("/webhook", async (req, res) => {
       }),
     ]);
     res.json({
-      msg: "Captured",
+      message: "Captured",
     });
-  } catch (error) {
-    console.log(error);
+  } catch (e) {
+    console.error(e);
     res.status(411).json({
-      msg: "Error while processing webhook",
+      message: "Error while processing webhook",
     });
   }
 });

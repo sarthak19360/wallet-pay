@@ -4,8 +4,8 @@ interface AppbarProps {
   user?: {
     name?: string | null;
   };
-  onSignin: any;
-  onSignout: any;
+  onSignin: () => void;
+  onSignout: () => void;
 }
 
 export const Appbar = ({ user, onSignin, onSignout }: AppbarProps) => {
