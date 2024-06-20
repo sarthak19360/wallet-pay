@@ -49,6 +49,15 @@ export async function p2pTransfer(to: string, amount: number) {
           locked: 0,
         },
       });
+
+      await tx.p2pTransfer.create({
+        data: {
+          amount,
+          timestamp: new Date(),
+          fromUserId: Number(from),
+          toUserId: toUser.id,
+        },
+      });
     });
   } catch (error) {
     log(error);
