@@ -5,8 +5,8 @@ import { SessionProvider } from "next-auth/react";
 
 export const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
-    <ReduxProvider store={store}>
-      <SessionProvider>{children}</SessionProvider>
-    </ReduxProvider>
+    // <ReduxProvider store={store}>
+    <SessionProvider>{children}</SessionProvider>
+    // </ReduxProvider>
   );
 };
